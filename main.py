@@ -13,7 +13,7 @@ origins = [
     "http://localhost",
     "http://localhost:3000",
     "http://localhost:8000",
-    
+
 ]
 
 app.add_middleware(
@@ -23,21 +23,19 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
     expose_headers=["Content-Range"],
-    
+
 )
 
 app.include_router(todo_router, prefix="/todo", tags=["todo"])
 
 # if __name__ == "__main__":
 
-    # from app.db import engine
-    # from app.db import Base
+#     from app.db import engine
+#     from app.db import Base
 
-    # def init_db():
-    #     Base.metadata.create_all(bind=engine)
-    # init_db()
-    
+#     def init_db():
+#         Base.metadata.create_all(bind=engine)
+#     init_db()
+
 #     import uvicorn
 #     uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)
-
-
