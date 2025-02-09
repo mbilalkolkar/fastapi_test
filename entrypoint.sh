@@ -1,5 +1,5 @@
 #!/bin/sh
-
+echo "-------------------------------entrypoint.sh---------------------------------"
 if [ "$DEBUG" = "true" ]; then
     echo "Running in debug mode"
     # exec uvicorn main:app --host 0.0.0.0 --port 8000 --reload
