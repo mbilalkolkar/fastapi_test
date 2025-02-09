@@ -4,17 +4,19 @@ services:
   fastapi-e-commerce-api:
     build: .
     ports:
-      - "9000:9000"
+      - "${API_PORT}:8000"
     volumes:
       - .:/app
     env_file:
       - .env
-    command: uv run uvicorn --host 0.0.0.0 --port 9000 main:app
+    command: uv run uvicorn --host 0.0.0.0 --port 8000 main:app
 #     depends_on:
 #       - db
 
 #   fastapi-e-commerce-db-postgres:
 #     image: postgres:latest
+#     ports:
+#       - "${POSTGRES_PORT}:5432"
 #     volumes:
 #       - postgres_data:/var/lib/postgresql/data
 #     environment:

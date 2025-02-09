@@ -14,4 +14,4 @@ COPY . /app/
 RUN apk add --no-cache python3~=3.12
 #RUN uv sync
 
-CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "${APP_PORT}"]
+CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
