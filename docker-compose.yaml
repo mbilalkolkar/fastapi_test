@@ -9,9 +9,13 @@ services:
       - .:/app
     env_file:
       - .env
-    command: uv run uvicorn --host 0.0.0.0 --port 8000 main:app
+    # command: uv run uvicorn --host 0.0.0.0 --port 8000 main:app # this is already in Dockerfile
 #     depends_on:
 #       - db
+    environment:
+      - DEBUG=${DEBUG}
+      - WEB_PORT=${WEB_PORT}
+      - API_PORT=${API_PORT}
 
 #   fastapi-e-commerce-db-postgres:
 #     image: postgres:latest
