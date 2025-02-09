@@ -49,7 +49,8 @@ RUN ls -lah /
 
 # production
 # CMD ["uv", "run", "fastapi", "run"] 
-CMD ["entrypoint.sh"] 
+CMD ["/app/entrypoint.sh"] 
+# CMD ["pwd"] 
 # CMD ["fastapi", "run"] 
 # CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 # CMD ["/app/.venv/bin/fastapi", "run", "/app/main.py", "--port", "80", "--host", "0.0.0.0"]
