@@ -52,11 +52,12 @@ RUN ls -lah /
 COPY entrypoint.sh /entrypoint.sh
 
 # Make the entrypoint script executable
+RUN chmod +x entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # production
 # CMD ["uv", "run", "fastapi", "run"] 
-CMD ["/entrypoint.sh"] 
+CMD ["./entrypoint.sh"] 
 # CMD ["pwd"] 
 # CMD ["fastapi", "run"] 
 # CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
