@@ -32,7 +32,7 @@ RUN ls -lah
 # COPY requirements.txt /app
 
 # Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+# RUN pip install --no-cache-dir -r requirements.txt
 
 # RUN ls -lah /app
 # RUN pwd
@@ -43,12 +43,14 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # # Set the entrypoint to the shell script
 # # ENTRYPOINT ["/entrypoint.sh"]
-
-# RUN ls -lah .venv/
+RUN echo "is there .venvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv"
+RUN ls -lah .venv/
+RUN ls -lah /
 
 # production
 # CMD ["uv", "run", "fastapi", "run"] 
-CMD ["fastapi", "run"] 
+CMD ["entrypoint.sh"] 
+# CMD ["fastapi", "run"] 
 # CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 # CMD ["/app/.venv/bin/fastapi", "run", "/app/main.py", "--port", "80", "--host", "0.0.0.0"]
 # CMD ["/app/.venv/bin/fastapi", "run", "main:app", "--port", "8000", "--host", "0.0.0.0"]
