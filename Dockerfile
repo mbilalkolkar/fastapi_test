@@ -36,4 +36,4 @@ WORKDIR /app
 RUN chmod +x /app/entrypoint.sh
 
 # Set the entrypoint to the shell script
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["entrypoint.sh"]
