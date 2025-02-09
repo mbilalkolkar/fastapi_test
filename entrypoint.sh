@@ -1,7 +1,10 @@
 #!/bin/sh
 pwd
+ls
+echo "--ls----------------------------------------"
 cd /app
 pwd
+ls
 echo "-------------------------------entrypoint.sh---------------------------------"
 if [ "$DEBUG" = "true" ]; then
     echo "Running in debug mode"
