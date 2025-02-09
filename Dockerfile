@@ -7,13 +7,14 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
-
-
+RUN echo "---------------------------------------work dir---------------------------"
+RUN ls -lah
 # Copy the application into the container.
 COPY . /app/
 
 WORKDIR /app
-
+RUN ls -lah
+RUN echo "---------------------------------------work dir---------------------------"
 # RUN apk add --no-cache python3~=3.12
 # RUN pip install --no-cache-dir uv
 #RUN uv sync

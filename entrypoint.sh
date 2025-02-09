@@ -9,6 +9,8 @@ cd /app
 echo "--in /app-----------------------------------"
 pwd
 ls
+echo "--ls /app/app-----------------------------------"
+ls ./app
 echo "-------------------------------entrypoint.sh---------------------------------"
 if [ "$DEBUG" = "true" ]; then
     echo "Running in debug mode"
