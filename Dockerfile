@@ -27,19 +27,28 @@ RUN echo "sssssssssssssssssssssssssssssssssssssssssssssssssssnake"
 RUN chmod +x /app/entrypoint.sh
 # # RUN chmod +x /entrypoint.sh
 RUN ls -lah
+
+# Copy the requirements file
+# COPY requirements.txt /app
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
 # RUN ls -lah /app
 # RUN pwd
 # RUN /app/entrypoint.sh
 # RUN uv sync --frozen --no-cache
-RUN uv sync --no-cache
+# RUN uv sync --no-cache
+
 
 # # Set the entrypoint to the shell script
 # # ENTRYPOINT ["/entrypoint.sh"]
 
-RUN ls -lah .venv/
+# RUN ls -lah .venv/
 
 # production
-CMD ["uv", "run", "fastapi", "run"] 
+# CMD ["uv", "run", "fastapi", "run"] 
+CMD ["fastapi", "run"] 
 # CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 # CMD ["/app/.venv/bin/fastapi", "run", "/app/main.py", "--port", "80", "--host", "0.0.0.0"]
 # CMD ["/app/.venv/bin/fastapi", "run", "main:app", "--port", "8000", "--host", "0.0.0.0"]
