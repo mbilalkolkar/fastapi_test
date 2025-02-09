@@ -42,14 +42,14 @@ RUN ls -lah
 
 
 # # Set the entrypoint to the shell script
-ENTRYPOINT ["entrypoint.sh"]
+# ENTRYPOINT ["entrypoint.sh"]
 RUN echo "is there .venvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv"
-RUN ls -lah .venv/
+# RUN ls -lah .venv/
 RUN ls -lah /
 
 # production
 # CMD ["uv", "run", "fastapi", "run"] 
-# CMD ["entrypoint.sh"] 
+CMD ["entrypoint.sh"] 
 # CMD ["fastapi", "run"] 
 # CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 # CMD ["/app/.venv/bin/fastapi", "run", "/app/main.py", "--port", "80", "--host", "0.0.0.0"]
