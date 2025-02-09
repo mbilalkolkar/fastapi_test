@@ -30,7 +30,7 @@ WORKDIR /app
 
 
 # Copy the entrypoint script
-COPY entrypoint.sh /app/entrypoint.sh
+# COPY entrypoint.sh /app/entrypoint.sh
 
 # Make the entrypoint script executable
 RUN chmod +x /app/entrypoint.sh
