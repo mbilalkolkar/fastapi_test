@@ -34,6 +34,9 @@ WORKDIR /app
 
 # Make the entrypoint script executable
 RUN chmod +x /app/entrypoint.sh
-
+RUN echo "sssssssssssssssssssssssssssssssssssssssssssssssssssnake"
+RUN ls -lah
+RUN ls -lah /app
+RUN pwd
 # Set the entrypoint to the shell script
 ENTRYPOINT ["entrypoint.sh"]
