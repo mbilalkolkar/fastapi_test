@@ -39,10 +39,10 @@ RUN uv sync --no-cache
 RUN ls -lah .venv/
 
 # production
-# CMD ["uv", "run", "fastapi", "run"] 
+CMD ["uv", "run", "fastapi", "run"] 
 # CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 # CMD ["/app/.venv/bin/fastapi", "run", "/app/main.py", "--port", "80", "--host", "0.0.0.0"]
-CMD ["/app/.venv/bin/fastapi", "run", "main:app", "--port", "8000", "--host", "0.0.0.0"]
+# CMD ["/app/.venv/bin/fastapi", "run", "main:app", "--port", "8000", "--host", "0.0.0.0"]
 
 # development
 # CMD ["uv", "run", "fastapi", "dev"]
