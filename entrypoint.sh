@@ -7,6 +7,6 @@ if [ "$DEBUG" = "true" ]; then
 else
     echo "Running in production mode"
     # exec gunicorn main:app --bind 0.0.0.0:8000 --workers 3
-    exec uv sync --frozen --no-cache
+    exec uv sync --no-cache
     exec uv run fastapi run
 fi
