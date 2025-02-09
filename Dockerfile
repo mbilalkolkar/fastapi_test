@@ -54,7 +54,7 @@ COPY entrypoint.sh /entrypoint.sh
 # Make the entrypoint script executable
 RUN chmod +x entrypoint.sh
 RUN chmod +x /entrypoint.sh
-RUN entrypoint.sh
+RUN /entrypoint.sh
 # production
 CMD ["uv", "run", "fastapi", "run"] 
 # CMD ["/entrypoint.sh"] 
