@@ -18,27 +18,27 @@ WORKDIR /app
 # RUN pip install --no-cache-dir uv
 #RUN uv sync
 
-# production
-# CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
-# CMD ["uv", "run", "fastapi", "run"] 
-
-# Run the application.
-# CMD ["/app/.venv/bin/fastapi", "run", "app/main.py", "--port", "80", "--host", "0.0.0.0"]
-
-# development
-# CMD ["uv", "run", "fastapi", "dev"]
-
 
 # Copy the entrypoint script
 # COPY entrypoint.sh /app/entrypoint.sh
 
-# Make the entrypoint script executable
+# # Make the entrypoint script executable
 RUN chmod +x /app/entrypoint.sh
-# RUN chmod +x /entrypoint.sh
+# # RUN chmod +x /entrypoint.sh
 RUN echo "sssssssssssssssssssssssssssssssssssssssssssssssssssnake"
 RUN ls -lah
-RUN ls -lah /app
-RUN pwd
+# RUN ls -lah /app
+# RUN pwd
 RUN /app/entrypoint.sh
-# Set the entrypoint to the shell script
-# ENTRYPOINT ["/entrypoint.sh"]
+# # Set the entrypoint to the shell script
+# # ENTRYPOINT ["/entrypoint.sh"]
+
+
+
+# production
+CMD ["uv", "run", "fastapi", "run"] 
+# CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# CMD ["/app/.venv/bin/fastapi", "run", "app/main.py", "--port", "80", "--host", "0.0.0.0"]
+
+# development
+# CMD ["uv", "run", "fastapi", "dev"]
