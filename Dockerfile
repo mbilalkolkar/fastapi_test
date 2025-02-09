@@ -23,9 +23,9 @@ WORKDIR /app
 # COPY entrypoint.sh /app/entrypoint.sh
 
 # # Make the entrypoint script executable
+RUN echo "sssssssssssssssssssssssssssssssssssssssssssssssssssnake"
 RUN chmod +x /app/entrypoint.sh
 # # RUN chmod +x /entrypoint.sh
-RUN echo "sssssssssssssssssssssssssssssssssssssssssssssssssssnake"
 RUN ls -lah
 # RUN ls -lah /app
 # RUN pwd
@@ -33,11 +33,11 @@ RUN /app/entrypoint.sh
 # # Set the entrypoint to the shell script
 # # ENTRYPOINT ["/entrypoint.sh"]
 
-
+RUN ls -lah .venv/
 
 # production
-CMD ["uv", "run", "fastapi", "run"] 
-# CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# CMD ["uv", "run", "fastapi", "run"] 
+CMD ["ls", "-lah;", "uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 # CMD ["/app/.venv/bin/fastapi", "run", "app/main.py", "--port", "80", "--host", "0.0.0.0"]
 
 # development
