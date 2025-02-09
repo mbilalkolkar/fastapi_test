@@ -30,7 +30,8 @@ RUN ls -lah
 # RUN ls -lah /app
 # RUN pwd
 # RUN /app/entrypoint.sh
-RUN uv sync --frozen --no-cache
+# RUN uv sync --frozen --no-cache
+RUN uv sync --no-cache
 
 # # Set the entrypoint to the shell script
 # # ENTRYPOINT ["/entrypoint.sh"]
