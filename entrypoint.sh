@@ -1,4 +1,7 @@
 #!/bin/sh
+pwd
+cd /app
+pwd
 echo "-------------------------------entrypoint.sh---------------------------------"
 if [ "$DEBUG" = "true" ]; then
     echo "Running in debug mode"
