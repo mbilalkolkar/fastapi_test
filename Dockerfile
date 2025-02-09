@@ -29,7 +29,9 @@ RUN chmod +x /app/entrypoint.sh
 RUN ls -lah
 # RUN ls -lah /app
 # RUN pwd
-RUN /app/entrypoint.sh
+# RUN /app/entrypoint.sh
+RUN uv sync --frozen --no-cache
+
 # # Set the entrypoint to the shell script
 # # ENTRYPOINT ["/entrypoint.sh"]
 
