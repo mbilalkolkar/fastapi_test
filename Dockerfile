@@ -14,9 +14,4 @@ COPY . /app/
 RUN apk add --no-cache python3~=3.12
 #RUN uv sync
 
-RUN uv run python manage.py collectstatic --noinput
-RUN uv run python manage.py  makemigrations --noinput
-RUN uv run python manage.py  migrate --noinput
-
-
 CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "${APP_PORT}"]
