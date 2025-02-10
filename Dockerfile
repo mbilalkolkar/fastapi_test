@@ -13,7 +13,7 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 # Copy the poetry.lock and pyproject.toml to install dependencies
 #COPY pyproject.toml poetry.lock ./
-# COPY pyproject.toml uv.lock ./
+COPY pyproject.toml uv.lock ./
 
 
 # Copy the entrypoint script
@@ -29,7 +29,7 @@ RUN chmod +x /entrypoint.sh
 # Install dependencies using poetry without virtualenv creation
 #RUN poetry config virtualenvs.create false \
 #  && poetry install --no-dev --no-interaction --no-ansi
-# RUN uv sync --frozen 
+RUN uv sync --frozen 
 
 # Set the entrypoint to the shell script
 # ENTRYPOINT ["/entrypoint.sh"]
