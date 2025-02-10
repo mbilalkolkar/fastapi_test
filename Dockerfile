@@ -20,6 +20,10 @@ RUN uv sync --frozen
 FROM base AS dev
 #UN uv sync --frozen 
 ENV PYTHONUNBUFFERED=1
+
+RUN echo "---------------------------------------------current dir------------------"
+RUN ls -lah
+
 #CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
 CMD ["uv", "run", "fastapi", "dev","--host", "0.0.0.0"]
 
