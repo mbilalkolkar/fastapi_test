@@ -1,7 +1,7 @@
 version: '3.9'
 
 services:
-  fastapi-e-commerce-api:
+  fastapi-test-api:
     build:
       context: .
       target: ${DOCKER_BUILD_STAGE:-dev}
