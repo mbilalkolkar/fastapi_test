@@ -25,7 +25,7 @@ RUN echo "---------------------------------------work dir-----------------------
 
 # # Make the entrypoint script executable
 RUN echo "sssssssssssssssssssssssssssssssssssssssssssssssssssnake"
-RUN chmod +x /app/entrypoint.sh
+# RUN chmod +x /app/entrypoint.sh
 # # RUN chmod +x /entrypoint.sh
 RUN ls -lah
 
