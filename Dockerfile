@@ -1,69 +1,32 @@
-# FROM python:3.10-slim
-# FROM ghcr.io/astral-sh/uv:alpine
-FROM python:3.12-slim
+# Base image
+FROM python:3.12-slim AS base
+WORKDIR /app
 
-# Install uv.
+# Install Poetry
+#RUN pip install poetry
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-RUN echo "---------------------------------------work dir---------------------------"
-RUN ls -lah
-# Copy the application into the container.
-COPY . /app/
 
-WORKDIR /app
-RUN ls -lah
-RUN echo "---------------------------------------work dir---------------------------"
-# RUN apk add --no-cache python3~=3.12
-# RUN pip install --no-cache-dir uv
-#RUN uv sync
+# Copy the poetry.lock and pyproject.toml to install dependencies
+#COPY pyproject.toml poetry.lock ./
+COPY pyproject.toml uv.lock ./
 
+# Install dependencies using poetry without virtualenv creation
+#RUN poetry config virtualenvs.create false \
+#  && poetry install --no-dev --no-interaction --no-ansi
+RUN uv sync --frozen 
 
-# Copy the entrypoint script
-# COPY entrypoint.sh /app/entrypoint.sh
-
-# # Make the entrypoint script executable
-RUN echo "sssssssssssssssssssssssssssssssssssssssssssssssssssnake"
-RUN chmod +x /app/entrypoint.sh
-# # RUN chmod +x /entrypoint.sh
-RUN ls -lah
-
-# Copy the requirements file
-# COPY requirements.txt /app
-
-# Install dependencies
-# RUN pip install --no-cache-dir -r requirements.txt
-
-# RUN ls -lah /app
-# RUN pwd
-# RUN /app/entrypoint.sh
-# RUN uv sync --frozen --no-cache
-# RUN uv sync --no-cache
+# Stage 1: Development with hot reloading
+FROM base AS dev
+#UN uv sync --frozen 
+ENV PYTHONUNBUFFERED=1
+#CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+CMD ["uv", "run", "fastapi", "dev","--host", "0.0.0.0"]
 
 
-# # Set the entrypoint to the shell script
-# ENTRYPOINT ["entrypoint.sh"]
-RUN echo "is there .venvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv"
-# RUN ls -lah .venv/
-RUN ls -lah /
-
-# Copy the entrypoint script
-COPY entrypoint.sh /entrypoint.sh
-
-# Make the entrypoint script executable
-RUN chmod +x entrypoint.sh
-RUN chmod +x /entrypoint.sh
-RUN /entrypoint.sh
-# production
-CMD ["uv", "run", "fastapi", "run"] 
-# CMD ["/entrypoint.sh"] 
-# CMD ["pwd"] 
-# CMD ["fastapi", "run"] 
-# CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
-# CMD ["/app/.venv/bin/fastapi", "run", "/app/main.py", "--port", "80", "--host", "0.0.0.0"]
-# CMD ["/app/.venv/bin/fastapi", "run", "main:app", "--port", "8000", "--host", "0.0.0.0"]
-
-# development
-# CMD ["uv", "run", "fastapi", "dev"]
-
+# Stage 2: Production with Gunicorn + Uvicorn workers
+FROM base AS prod
+RUN uv sync --frozen --no-cache
+ENV PYTHONUNBUFFERED=1
+#CMD ["gunicorn", "app.main:app", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000"]
+CMD ["uv", "run", "fastapi", "run"]
