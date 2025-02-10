@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  fastapi-test-api:
+    build:
+      context: .
+      target: ${DOCKER_BUILD_STAGE:-dev}
+    volumes:
+      - .:/app  # Mount current directory for live code updates in dev
+      - /app/.venv  # Avoid mounting the virtual environment created by poetry
+    ports:
+      - "${API_PORT:-8000}:8000"
+    # command: ${DOCKER_COMMAND:-uv run fastapi dev main:app --host 0.0.0.0}
+    env_file:
+      - .env.${APP_ENV:-dev}
+    environment:
+      - APP_ENV=${APP_ENV}
+      - DEBUG=${DEBUG}
+      - API_HOST=${API_HOST}
+      - API_PORT=${API_PORT}
+      - DOCKER_COMMAND=${DOCKER_COMMAND}
+      - DOCKER_BUILD_STAGE=${DOCKER_BUILD_STAGE}
