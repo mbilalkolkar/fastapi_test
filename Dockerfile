@@ -32,7 +32,7 @@ RUN chmod +x /entrypoint.sh
 # RUN uv sync --frozen 
 
 # Set the entrypoint to the shell script
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
 
 
 # Stage 1: Development with hot reloading
