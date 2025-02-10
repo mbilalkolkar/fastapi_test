@@ -13,7 +13,7 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 # Copy the poetry.lock and pyproject.toml to install dependencies
 #COPY pyproject.toml poetry.lock ./
-COPY pyproject.toml uv.lock ./
+# COPY pyproject.toml uv.lock ./
 
 
 # Copy the entrypoint script
