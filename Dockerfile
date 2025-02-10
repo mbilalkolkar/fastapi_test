@@ -32,7 +32,7 @@ RUN chmod +x /entrypoint.sh
 # RUN uv sync --frozen 
 
 # Set the entrypoint to the shell script
-ENTRYPOINT ["/entrypoint.sh"]
+# ENTRYPOINT ["/entrypoint.sh"]
 
 
 # Stage 1: Development with hot reloading
@@ -43,7 +43,8 @@ RUN echo "---------------------------------------------current dir--------------
 RUN ls -lah
 
 #CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
-CMD ["uv", "run", "fastapi", "dev","--host", "0.0.0.0"]
+# CMD ["uv", "run", "fastapi", "dev","--host", "0.0.0.0"]
+CMD ["/entrypoint.sh"] 
 
 
 # # Stage 2: Production with Gunicorn + Uvicorn workers
