@@ -10,7 +10,7 @@ services:
       - /app/.venv  # Avoid mounting the virtual environment created by poetry
     ports:
       - "${API_PORT:-8000}:8000"
-    command: ${DOCKER_COMMAND:-uv run fastapi dev main:app --host 0.0.0.0}
+    # command: ${DOCKER_COMMAND:-uv run fastapi dev main:app --host 0.0.0.0}
     env_file:
       - .env.${APP_ENV:-dev}
     environment:

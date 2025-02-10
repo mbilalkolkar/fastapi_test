@@ -44,7 +44,8 @@ RUN ls -lah
 
 #CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
 # CMD ["uv", "run", "fastapi", "dev","--host", "0.0.0.0"]
-CMD ["/entrypoint.sh"] 
+ENTRYPOINT ["/entrypoint.sh"]
+# CMD ["/entrypoint.sh"] 
 
 
 # # Stage 2: Production with Gunicorn + Uvicorn workers
